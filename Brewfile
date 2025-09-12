@@ -1,0 +1,7 @@
+brew "git"
+brew "stow"
+brew "tfenv"
+brew "tree"
+cask "ghostty"
+cask "hiddenbar"
+cask "scroll-reverser"

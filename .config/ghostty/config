@@ -32,3 +32,4 @@ macos-titlebar-style = hidden
 macos-auto-secure-input = true
 macos-secure-input-indication = true
 confirm-close-surface = false
+keybind = shift+enter=text:\x1b\r

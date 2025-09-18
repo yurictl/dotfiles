@@ -126,3 +126,7 @@ ulimit -n 4096 2>/dev/null || true
 
 # ----- per-host/per-project overrides -----
 [ -d "$HOME/.bashrc.d" ] && for f in "$HOME/.bashrc.d/"*.bash; do [ -r "$f" ] && source "$f"; done
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

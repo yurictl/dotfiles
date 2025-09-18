@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 command -v gitleaks >/dev/null || { echo "Install gitleaks"; exit 1; }
+
 gitleaks protect --staged --redact
-remote="${1:-origin}"; branch="${2:-HEAD}"
-range="$(git rev-list --left-only --count $branch...$remote/${branch##refs/heads/} >/dev/null 2>&1 && echo "$remote/${branch##refs/heads/}..$branch" || echo "$branch")"
+
+remote="${1:-origin}"
+branch="$(git rev-parse --abbrev-ref HEAD || echo HEAD)"
+
+if upstream="$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)"; then
+  range="$upstream..HEAD"
+else
+  range="HEAD"
+fi
+
 gitleaks detect --redact --log-opts="$range"
